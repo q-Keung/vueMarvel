@@ -1,0 +1,26 @@
+/*广告走马灯*/
+.notice-cont {
+  position: relative;
+  font-size: 28rpx;
+  flex: 1;
+  overflow: hidden;
+  height: 40rpx;
+
+  .notice_scroll {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    -webkit-animation: scoll 20s linear 1s infinite;
+  }
+}
+
+@keyframes scoll {
+  from {
+    transform: translate3d(0px, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
