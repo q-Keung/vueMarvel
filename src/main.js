@@ -5,7 +5,15 @@ import App from './App'
 import router from './router'
 import elementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
-Vue.use(elementUi)
+
+//国际化语言包
+import VueI18n from 'vue-i18n'
+import locale from 'element-ui/lib/locale'
+import enLocale from 'element-ui/lib/locale/lang/en'
+import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
+
+Vue.use(elementUi, { enLocale })
+
 Vue.config.productionTip = false
 Vue.prototype.$alert = elementUi.MessageBox.alert;
 Vue.prototype.$confirm = elementUi.MessageBox.confirm;

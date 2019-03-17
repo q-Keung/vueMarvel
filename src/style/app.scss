@@ -24,3 +24,18 @@
     transform: translate3d(-50%, 0, 0);
   }
 }
+.c-vertical{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.c-center{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.items-center{
+  display: flex;
+  align-items: center;
+}
