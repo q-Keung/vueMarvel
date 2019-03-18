@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="operator">
+    <div class="operator delScrollBar">
       <el-button type="warning" @click="clearSelection">清空选择</el-button>
       <el-input placeholder="请输入关键字" prefix-icon="el-icon-search" v-model="tableVal"></el-input>
       <el-button type="primary">搜索</el-button>
     </div>
-    <el-table ref="multipleTable" @cell-click="cellClick" @select="selectOne" @select-all="selectAll" height="556"
+    <el-table class="" ref="multipleTable" @cell-click="cellClick" @select="selectOne" @select-all="selectAll" height="100%"
       :data="tableData.slice((curPages-1)*pageSize,curPages*pageSize)" stripe highlight-current-row current-row-key="1">
       <el-table-column type="selection" width="50"></el-table-column>
       <el-table-column type="index" width="50" label="序号"></el-table-column>
@@ -22,8 +22,9 @@
         </template>
       </el-table-column>
     </el-table>
-    <div style="width:100%;display:flex;justify-content:center;">
-      <el-pagination @current-change="current_change" :current-page="curPages" :page-size="pageSize" background layout="prev, pager, next" :total.sync="tableData.length"></el-pagination>
+    <div class="pageSize-box">
+      <el-pagination @current-change="current_change" :current-page="curPages" :page-size="pageSize" background layout="prev, pager, next"
+        :total.sync="tableData.length"></el-pagination>
     </div>
   </div>
 </template>
@@ -33,12 +34,12 @@
     data() {
       return {
         tableVal: '',
-        pageSize:10,
-        curPages:1
+        pageSize: 10,
+        curPages: 1
       }
     },
     methods: {
-      current_change(cur){
+      current_change(cur) {
         this.curPages = cur;
       },
       //选中全部
@@ -168,6 +169,16 @@
 </script>
 
 <style lang="scss">
+  // .el-table__body-wrapper::-webkit-scrollbar {
+  //   display: none;
+  // }
+  .pageSize-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
   .operator {
     width: 100%;
     height: 50px;

@@ -24,6 +24,11 @@
     transform: translate3d(-50%, 0, 0);
   }
 }
+/*去除滚动条*/
+.delScrollBar::-webkit-scrollbar {
+  display: none;
+}
+
 .c-vertical{
   display: flex;
   flex-direction: column;

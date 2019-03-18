@@ -1,13 +1,15 @@
 <template>
-  <div class="marvel-data">
+  <div class="marvel-data" :style="{height:innerH}">
     <c-table></c-table>
   </div>
 </template>
 
 <script>
 import cTable from "../../components/table"
+import mixins from "../../mixins/index"
   export default {
     name: 'marveldata',
+    mixins:[mixins],
     components:{
       cTable
     },

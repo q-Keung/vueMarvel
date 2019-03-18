@@ -13,10 +13,12 @@ export default {
 
 <style lang="scss">
 @import './style/app.scss';
+@import './style/fontFace.scss';
 * {
   margin: 0;
   padding: 0;
 }
+
 div{
   box-sizing: border-box;
 }
