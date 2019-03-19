@@ -28,7 +28,7 @@
             <div class="marvel-rate">
               <div class="rate-title">
                 <span class="span">了解完漫威电影宇宙，就来评个分吧！<span class="iconfont iconmysql"></span></span>
-                <el-rate @change="changeRate" v-model="rateVal" allow-half show-score :colors="['#99A9BF', '#F7BA2A', '#FF9900']"></el-rate>
+                <el-rate ref="rate" @change="changeRate" v-model="rateVal" allow-half show-score :colors="['#99A9BF', '#F7BA2A', '#FF9900']"></el-rate>
               </div>
             </div>
           </div>
@@ -42,6 +42,10 @@
 <script>
   import echarts from 'echarts'
   import timeLine from '../components/timeline'
+  import {
+    mapMutations,
+    mapGetters
+  } from 'vuex'
   export default {
     name: 'mainer',
     components: {
@@ -66,18 +70,20 @@
         ]
       }
     },
+    created() {
+      this.rateVal = this.$store.getters.getRate;
+    },
     methods: {
       getCarousel(e) {
         // console.log(e);
       },
-      changeRate(rate){
-        console.log(rate);
+      changeRate(rate) {
+        //bug  tab
         this.rateVal = rate;
-        this.$nextTick(_=>{
-          this.$message({
-            type:"success",
-            message:'谢谢您的评分！你真可爱！'
-          })
+        this.$store.commit('setRate', rate);
+        this.$message({
+          type: "success",
+          message: '谢谢您的评分！你真可爱！'
         })
       },
       initChart() {
@@ -212,24 +218,27 @@
       box-shadow: 1px 1px 3p 2px #b7b8bb;
     }
 
-    
+
 
     /*漫威时间线*/
     .marvel-timeline {
       width: 100%;
     }
+
     /*评分*/
-    .marvel-rate{
-      margin:20px 0;
-      width:100%;
-      display:flex;
+    .marvel-rate {
+      margin: 20px 0;
+      width: 100%;
+      display: flex;
       justify-content: flex-end;
-      .rate-title{
-        width:32%;
-        display:flex;
+
+      .rate-title {
+        width: 32%;
+        display: flex;
       }
-      .span{
-        margin-right:20px;
+
+      .span {
+        margin-right: 20px;
       }
     }
 

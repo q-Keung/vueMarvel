@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import vuex from './store/index'
+import store from './store/index'
 import elementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 
@@ -33,7 +33,7 @@ Vue.prototype.$msgbox = elementUi.MessageBox;
 new Vue({
   el: '#app',
   router,
-  vuex,
+  store,
   components: {
     App
   },

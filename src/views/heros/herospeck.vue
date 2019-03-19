@@ -14,7 +14,7 @@
           <span class="c-t">{{item.content}}</span>
           <span class="c-b">{{item.date}}</span>
         </div>
-        <div class="del-tag c-center">
+        <div class="del-tag c-center" @click="contentData.splice(item,1)">
           <i class="el-icon-error"></i>
         </div>
       </div>
@@ -26,14 +26,16 @@
   import 'quill/dist/quill.core.css'
   import 'quill/dist/quill.snow.css'
   import 'quill/dist/quill.bubble.css'
-
+  import mixins from '../../mixins/index'
   import {
     quillEditor
   } from 'vue-quill-editor'
+  import {mapGetters,mapMutations} from 'vuex'
   export default {
     components: {
       quillEditor,
     },
+    mixins :[mixins],
     data() {
       return {
         content: "",
@@ -47,28 +49,22 @@
         }]
       }
     },
+    created(){
+    },
     methods: {
       onEditorChange(event) {
         // console.log(event);
         this.toContent = {
             content:event.text,
-            date: "2019-03-17 22:47"
+            date: this.speskGetTime()
         }
         // this.contentData.push(opt);
       },
       speakClick(content){
-          console.log(content);
-        //   let opt = {
-        //         content,
-        //         date: "2019-03-17 22:47"
-        //     }
-          this.contentData.push(content);
+          this.contentData.unshift(content);
           this.content = "";
       }
     },
-    created() {
-
-    }
   }
 
 </script>
