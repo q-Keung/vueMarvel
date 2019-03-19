@@ -53,12 +53,10 @@
     },
     methods: {
       onEditorChange(event) {
-        // console.log(event);
         this.toContent = {
             content:event.text,
             date: this.speskGetTime()
         }
-        // this.contentData.push(opt);
       },
       speakClick(content){
           this.contentData.unshift(content);
