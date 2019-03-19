@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store/index'
+import BaiduMap from 'vue-baidu-map'
 import elementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 
@@ -23,6 +24,12 @@ Vue.prototype.$notify = elementUi.Notification;
 Vue.prototype.$message = elementUi.Message;
 Vue.prototype.$loading = elementUi.Loading.service;
 Vue.prototype.$msgbox = elementUi.MessageBox;
+Vue.use(BaiduMap, {
+  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+  ak: 'Gj4pVfAeFPLn9gmaW4gfhrXOSZG1DaLG'
+})
+
+
 
 //改变element组件的尺寸和弹框的初始zIndex值
 // Vue.use(elementUi, {

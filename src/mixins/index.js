@@ -19,6 +19,9 @@ export default{
     computed: {
         innerH() {
             return (window.innerHeight - 80) + 'px';
+        },
+        innerW(){
+            return (window.innerWidth - 300);
         }
     },
 }

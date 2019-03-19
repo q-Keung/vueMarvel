@@ -1,6 +1,6 @@
 <template>
   <div class="heros-waterfall">
-    <vue-waterfall-easy enablePullDownEvent ref="waterfall" :height="innerH" :imgsArr="items" @scrollReachBottom="getData"
+    <vue-waterfall-easy enablePullDownEvent ref="waterfall" :width="innerW" :height="innerH" :imgsArr="items" @scrollReachBottom="getData"
       @click="imgClickFn">
       <div slot="waterfall-head" class="marvel-head">漫威图片墙</div>
       <!-- <div class="img-info" slot-scope="props">
@@ -168,7 +168,7 @@
 
 <style lang="scss">
   .heros-waterfall {
-    width: 100%;
+    width: calc(100vw - 300px);
     padding: 10px;
 
     // background:rgb(29, 29, 29);

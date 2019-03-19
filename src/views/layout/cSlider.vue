@@ -10,20 +10,20 @@
       </router-link>
       <router-link tag="span" :to="{path:'/marveldata'}">
         <el-menu-item index="marveldata">
-          <i class="el-icon-goods"></i>
+          <i class="iconfont iconfont-s iconbug"></i>
           <span slot="title">漫威数据</span>
         </el-menu-item>
       </router-link>
       <router-link tag="span" :to="{path:'/showheros'}">
         <el-menu-item index="showheros">
-          <i class="el-icon-goods"></i>
+          <i class="iconfont iconfont-s iconguanfangbanben"></i>
           <span slot="title">英雄展示</span>
         </el-menu-item>
       </router-link>
 
       <el-submenu index="4">
         <template slot="title">
-          <i class="el-icon-tickets"></i>
+          <i class="iconfont iconfont-s iconchrome"></i>
           <span slot="title">首代漫威</span>
         </template>
         <el-menu-item-group>
@@ -37,7 +37,7 @@
       </el-submenu>
       <el-submenu index="5">
         <template slot="title">
-          <i class="el-icon-tickets"></i>
+          <i class="iconfont iconfont-s iconfire-fill"></i>
           <span slot="title">二代漫威</span>
         </template>
         <el-menu-item-group>
@@ -53,6 +53,12 @@
         <el-menu-item index="herospeck">
           <i class="el-icon-goods"></i>
           <span slot="title">英雄发言</span>
+        </el-menu-item>
+      </router-link>
+      <router-link tag="span" :to="{path:'/herosposition'}">
+        <el-menu-item index="herosposition">
+          <i class="iconfont iconfont-s icondingwei"></i>
+          <span slot="title">英雄定位</span>
         </el-menu-item>
       </router-link>
     </el-menu>
@@ -100,12 +106,13 @@
 
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 100%;
     // min-height: 400px;
     height: 100%;
   }
+  
   .el-menu{
     border:none;
   }

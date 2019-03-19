@@ -230,15 +230,18 @@
       margin: 20px 0;
       width: 100%;
       display: flex;
-      justify-content: flex-end;
 
       .rate-title {
-        width: 32%;
+        width: 100%;
         display: flex;
+        justify-content: flex-end;
       }
 
       .span {
         margin-right: 20px;
+      }
+      .el-rate{
+        width:165px;
       }
     }
 

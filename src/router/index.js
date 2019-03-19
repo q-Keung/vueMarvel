@@ -34,6 +34,11 @@ export default new Router({
           path:'herospeck',
           name:'herospeck',
           component:()=>import("../views/heros/herospeck.vue")
+        },
+        {
+          path:'herosposition',
+          name:'herosposition',
+          component:()=>import("../views/heros/herosposition.vue")
         }
       ]
       

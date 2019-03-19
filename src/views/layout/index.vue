@@ -54,7 +54,7 @@ body > .el-container {
   top: 60px;
   bottom: 0;
   right: 0;
-  width: calc(100vw - 320px);
+  width: calc(100vw - 300px);
   // width: 100vw;
   // height: 100vh;
   margin-top: 0;

@@ -15,6 +15,24 @@
   }
 }
 
+/*侧边栏字体图标样式*/
+.iconfont-s {
+  margin-right: 5px;
+  width: 24px;
+  text-align: center;
+  font-size: 18px;
+  vertical-align: middle;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  // vertical-align: baseline;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+}
+
 @keyframes scoll {
   from {
     transform: translate3d(0px, 0, 0);
@@ -24,23 +42,26 @@
     transform: translate3d(-50%, 0, 0);
   }
 }
+
 /*去除滚动条*/
 .delScrollBar::-webkit-scrollbar {
   display: none;
 }
 
-.c-vertical{
+.c-vertical {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.c-center{
-  display:flex;
-  align-items:center;
-  justify-content:center;
+
+.c-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.items-center{
+
+.items-center {
   display: flex;
   align-items: center;
 }
