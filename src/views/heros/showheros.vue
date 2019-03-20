@@ -1,7 +1,7 @@
 <template>
   <div class="heros-waterfall">
-    <vue-waterfall-easy enablePullDownEvent ref="waterfall" :width="innerW" :height="innerH" :imgsArr="items" @scrollReachBottom="getData"
-      @click="imgClickFn">
+    <vue-waterfall-easy enablePullDownEvent ref="waterfall" :width="innerW" :height="innerH" :imgsArr="items"
+      @scrollReachBottom="getData" @click="imgClickFn">
       <div slot="waterfall-head" class="marvel-head">漫威图片墙</div>
       <!-- <div class="img-info" slot-scope="props">
         <p class="some-info">第{{props.index+1}}张图片</p>
@@ -14,6 +14,9 @@
 <script>
   import vueWaterfallEasy from 'vue-waterfall-easy'
   import mixins from '../../mixins/index'
+  import NProgress from 'nprogress' // Progress 进度条
+import 'nprogress/nprogress.css' // Progress 进度条样式
+import { setTimeout } from 'timers';
   function parseUrl() {
     let startUrl = '../../assets/imgs/waterfalls/s',
       endUrl = '.jpg',
@@ -33,112 +36,29 @@
       vueWaterfallEasy
     },
     created() {
-      console.log(vueWaterfallEasy);
+      NProgress.start();
     },
-    mixins : [mixins],
+    mixins: [mixins],
     data() {
       return {
         autoResize: false,
         loadingStyle: {
           background: 'red',
         },
-        items: [{
-            href: '1',
-            src: require("../../assets/imgs/waterfalls/s1.jpg"),
-          },
-          {
-            href: '2',
-            src: require("../../assets/imgs/waterfalls/s2.jpg"),
-          },
-          {
-            href: '3',
-            src: require("../../assets/imgs/waterfalls/s3.jpg"),
-          },
-          {
-            href: '4',
-            src: require("../../assets/imgs/waterfalls/s4.jpg"),
-          },
-          {
-            href: '5',
-            src: require("../../assets/imgs/waterfalls/s5.jpg"),
-          },
-          {
-            href: '10',
-            src: require("../../assets/imgs/waterfalls/s4.jpg"),
-          },
-          {
-            href: '6',
-            src: require("../../assets/imgs/waterfalls/s6.jpg"),
-          },
-          {
-            href: '7',
-            src: require("../../assets/imgs/waterfalls/s7.jpg"),
-          },
-          {
-            href: '8',
-            src: require("../../assets/imgs/waterfalls/s8.jpg"),
-          },
-          {
-            href: '9',
-            src: require("../../assets/imgs/waterfalls/s9.jpg"),
-          },
-          {
-            href: '11',
-            src: require("../../assets/imgs/waterfalls/s3.jpg"),
-          },
-          {
-            href: '12',
-            src: require("../../assets/imgs/waterfalls/s12.jpg"),
-          },
-          {
-            href: '13',
-            src: require("../../assets/imgs/waterfalls/s13.jpg"),
-          },
-          {
-            href: '14',
-            src: require("../../assets/imgs/waterfalls/s14.jpg"),
-          },
-          {
-            href: '15',
-            src: require("../../assets/imgs/waterfalls/s15.jpg"),
-          },
-          {
-            href: '16',
-            src: require("../../assets/imgs/waterfalls/s16.jpg"),
-          },
-          {
-            href: '17',
-            src: require("../../assets/imgs/waterfalls/s17.jpg"),
-          },
-          {
-            href: '18',
-            src: require("../../assets/imgs/waterfalls/s18.jpg"),
-          },
-          {
-            href: '19',
-            src: require("../../assets/imgs/waterfalls/s19.jpg"),
-          },
-          {
-            href: '20',
-            src: require("../../assets/imgs/waterfalls/s20.jpg"),
-          },
-          {
-            href: '21',
-            src: require("../../assets/imgs/waterfalls/s21.jpg"),
-          },
-          {
-            href: '22',
-            src: require("../../assets/imgs/waterfalls/s22.jpg"),
-          },
-          {
-            href: '23',
-            src: require("../../assets/imgs/waterfalls/s23.jpg"),
-          },
-
-        ]
+        items: []
       }
     },
+    created() {
+      console.log(process.env.BASE_API)
+      this.getWaterFallData();
+    },
     methods: {
+      getWaterFallData() {
+        this.$axios.get('/getMarvelWaterfall').then(res => {
+          console.log(res);
+          this.items = res.mWaterfall;
+        })
+      },
       getData() {
         setTimeout(() => {
           this.$refs.waterfall.waterfallOver()
@@ -157,7 +77,7 @@
       }
     },
     computed: {
-      
+
     },
     watch: {
 

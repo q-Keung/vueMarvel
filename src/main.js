@@ -7,7 +7,7 @@ import store from './store/index'
 import BaiduMap from 'vue-baidu-map'
 import elementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
-
+import request from './utils/request'
 //国际化语言包
 import VueI18n from 'vue-i18n'
 import locale from 'element-ui/lib/locale'
@@ -15,9 +15,9 @@ import enLocale from 'element-ui/lib/locale/lang/en'
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 
 Vue.use(elementUi)
-
+Vue.prototype.$axios = request;
 Vue.config.productionTip = false
-Vue.prototype.$alert = elementUi.MessageBox.alert;
+// Vue.prototype.$alert = elementUi.MessageBox.alert;
 Vue.prototype.$confirm = elementUi.MessageBox.confirm;
 Vue.prototype.$prompt = elementUi.MessageBox.prompt;
 Vue.prototype.$notify = elementUi.Notification;

@@ -5,15 +5,16 @@
       <el-input placeholder="请输入关键字" prefix-icon="el-icon-search" v-model="tableVal"></el-input>
       <el-button type="primary">搜索</el-button>
     </div>
-    <el-table class="" ref="multipleTable" @cell-click="cellClick" @select="selectOne" @select-all="selectAll" height="100%"
-      :data="tableData.slice((curPages-1)*pageSize,curPages*pageSize)" stripe highlight-current-row current-row-key="1">
+    <el-table class="" ref="multipleTable" @cell-click="cellClick" @select="selectOne" @select-all="selectAll" :data="tableData.slice((curPages-1)*pageSize,curPages*pageSize)"
+      stripe highlight-current-row current-row-key="1">
       <el-table-column type="selection" width="50"></el-table-column>
       <el-table-column type="index" width="50" label="序号"></el-table-column>
-      <el-table-column sortable prop="date" label="日期"></el-table-column>
-      <el-table-column prop="name" label="姓名"></el-table-column>
+      <el-table-column sortable prop="name" label="姓名"></el-table-column>
+      <el-table-column sortable prop="heroname" label="英雄称呼"></el-table-column>
       <el-table-column prop="sex" label="性别"></el-table-column>
-      <el-table-column prop="address" label="地址"></el-table-column>
-      <el-table-column prop="hobby" label="爱好"></el-table-column>
+      <el-table-column prop="iq" label="智商"></el-table-column>
+      <el-table-column prop="skill" label="技能"></el-table-column>
+      <el-table-column prop="ability" label="战力指数"></el-table-column>
       <el-table-column fixed="right" label="操作" width="80">
         <template slot-scope="scope">
           <el-button @click.native.prevent="deleteRow(scope.$index, tableData)" type="text" size="small">
@@ -30,14 +31,17 @@
 </template>
 
 <script>
+  import mixins from '../mixins/index'
   export default {
     data() {
       return {
         tableVal: '',
         pageSize: 10,
-        curPages: 1
+        curPages: 1,
+        resTableData: []
       }
     },
+    mixins: [mixins],
     methods: {
       current_change(cur) {
         this.curPages = cur;
@@ -68,87 +72,15 @@
         this.$refs.multipleTable.clearSelection();
       },
     },
-    created() {},
+    created() {
+      this.$axios.get('/getMarvelTable').then(res => {
+        console.log(res);
+        this.resTableData = res.tables;
+      })
+    },
     computed: {
       tableData() {
-        let data = [{
-            date: '2016-05-03',
-            name: '王小虎',
-            sex: '男',
-            address: '广州市普陀区金沙江路 1518 弄',
-            hobby: '曲棍球'
-          },
-          {
-            date: '2016-05-02',
-            name: '阿斯顿',
-            sex: '男',
-            address: '北京市普陀区金沙江路 1518 弄',
-            hobby: '足球'
-          },
-          {
-            date: '2016-05-04',
-            name: '大京水库',
-            sex: '男',
-            address: '上海市普陀区金沙江路 1518 弄',
-            hobby: '排球'
-          },
-          {
-            date: '2016-05-01',
-            name: '而无一',
-            sex: '男',
-            address: '深圳市普陀区金沙江路 1518 弄',
-            hobby: '游泳'
-          },
-          {
-            date: '2016-05-08',
-            name: '十点半',
-            sex: '男',
-            address: '成都市普陀区金沙江路 1518 弄',
-            hobby: '羽毛球'
-          },
-          {
-            date: '2016-05-06',
-            name: '王府大街',
-            sex: '男',
-            address: '青岛市普陀区金沙江路 1518 弄',
-            hobby: '乒乓球'
-          },
-          {
-            date: '2016-05-21',
-            name: '舒服点',
-            sex: '男',
-            address: '杭州市普陀区金沙江路 1518 弄',
-            hobby: '篮球'
-          },
-          {
-            date: '2016-05-29',
-            name: '阿斯加德',
-            sex: '男',
-            address: '惠州市普陀区金沙江路 1518 弄',
-            hobby: '铁锤'
-          },
-          {
-            date: '2016-05-28',
-            name: '可大可',
-            sex: '男',
-            address: '厦门市普陀区金沙江路 1518 弄',
-            hobby: '篮球'
-          },
-          {
-            date: '2016-05-30',
-            name: '大时代',
-            sex: '男',
-            address: '温州市普陀区金沙江路 1518 弄',
-            hobby: '飞刀'
-          },
-          {
-            date: '2016-05-22',
-            name: '爱仕达',
-            sex: '男',
-            address: '成都市普陀区金沙江路 1518 弄',
-            hobby: '唱歌'
-          },
-        ];
+        let data = this.resTableData;
         let d = (data, cd) => {
           for (let k in data) {
             if (data[k].toLowerCase().includes(this.tableVal.toLowerCase())) {
