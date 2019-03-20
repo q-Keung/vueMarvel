@@ -5,7 +5,7 @@
       <el-input placeholder="请输入关键字" prefix-icon="el-icon-search" v-model="tableVal"></el-input>
       <el-button type="primary">搜索</el-button>
     </div>
-    <el-table class="" ref="multipleTable" @cell-click="cellClick" @select="selectOne" @select-all="selectAll" :data="tableData.slice((curPages-1)*pageSize,curPages*pageSize)"
+    <el-table v-loading="loading" class="" ref="multipleTable" @cell-click="cellClick" @select="selectOne" @select-all="selectAll" :data="tableData.slice((curPages-1)*pageSize,curPages*pageSize)"
       stripe highlight-current-row current-row-key="1">
       <el-table-column type="selection" width="50"></el-table-column>
       <el-table-column type="index" width="50" label="序号"></el-table-column>
@@ -38,6 +38,7 @@
         tableVal: '',
         pageSize: 10,
         curPages: 1,
+        loading:true,
         resTableData: []
       }
     },
@@ -75,6 +76,7 @@
     created() {
       this.$axios.get('/getMarvelTable').then(res => {
         console.log(res);
+        this.loading = false;
         this.resTableData = res.tables;
       })
     },

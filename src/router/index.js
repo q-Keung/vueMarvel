@@ -39,6 +39,11 @@ export default new Router({
           path:'herosposition',
           name:'herosposition',
           component:()=>import("../views/heros/herosposition.vue")
+        },
+        {
+          path:'marvelupload',
+          name:'marvelupload',
+          component:()=>import("../views/qiuniu/marvelUpload.vue")
         }
       ]
       
