@@ -1,12 +1,12 @@
 <template>
   <div>
     <el-row :getter="20">
-      <el-col :span="8" :offset="2">
+      <el-col :span="8">
         <div class="marvel-logo">
           <img src="../../assets/marvel-l-logo.jpg" alt="">
         </div>
       </el-col>
-      <el-col :span="12">
+      <el-col :span="12" :offset="2">
         <div class="marvel-option">
           <el-input :class="{'more-width': isWidth}" ref="searchInput" placeholder="请输入内容" @blur="isWidth = !isWidth"
             @focus="isWidth = !isWidth" prefix-icon="el-icon-search" v-model="searchVal"></el-input>
@@ -106,7 +106,7 @@
     height: 60px;
     // outline: 1px solid red;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     img {

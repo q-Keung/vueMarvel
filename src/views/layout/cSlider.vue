@@ -1,6 +1,10 @@
 <template>
-  <div style="min-height: 100%;">
-    <el-menu @select="selMenu" @open="openMenu" @close="closeMenu" :collapse="isCollapse" background-color="#fff"
+  <div>
+    <div class="switch-menu items-center">
+      <i class="iconfont iconliebiaomoshi_kuai" @click="switchMenu"></i>
+    </div>
+    <!-- <el-collapse-transition> -->
+    <el-menu class="el-menu-vertical-demo" @select="selMenu" @open="openMenu" @close="closeMenu" :collapse="isCollapse" :collapse-transition="false" background-color="#fff"
       text-color="#606266" active-text-color="#2575fc" :default-active="$route.name" menu-trigger="hover">
       <router-link tag="span" :to="{path:'/main'}">
         <el-menu-item index="main">
@@ -66,6 +70,7 @@
         </el-menu-item>
       </router-link>
     </el-menu>
+    <!-- </el-collapse-transition> -->
   </div>
 </template>
 
@@ -81,7 +86,7 @@
     data() {
       return {
         isCollapse: false,
-        curActive:1,
+        curActive: 1,
       }
     },
     methods: {
@@ -93,16 +98,20 @@
       },
       closeMenu(er) {
         console.log("closeMenu:", er)
+      },
+      switchMenu(){
+        this.isCollapse = !this.isCollapse;
+        this.$emit('changeMenu',{isCollapse:this.isCollapse})
       }
     },
-    created(){
+    created() {
       console.log(this.$route);
       this.curActive = this.$route.name;
     },
-    watch:{
-      '$route'(to,form){
-        console.log("to",to)
-        console.log("form",form)
+    watch: {
+      '$route'(to, form) {
+        console.log("to", to)
+        console.log("form", form)
         this.curActive = to.name;
       }
     }
@@ -111,13 +120,26 @@
 </script>
 
 <style scoped lang="scss">
+  //收起之后的样式
   .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 100%;
-    // min-height: 400px;
-    height: 100%;
+    // width: 100px;
+    min-height: 300px;
+    // height: 100%;
   }
-  
-  .el-menu{
-    border:none;
+
+  .switch-menu {
+    height: 60px;
+    width: 92%;
+    margin: auto 4%;
+    justify-content: flex-end;
+    i{
+      font-size:28px;
+      margin-right:50px;
+    }
   }
+
+  .el-menu {
+    border: none;
+  }
+
 </style>
