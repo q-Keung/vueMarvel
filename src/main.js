@@ -8,6 +8,21 @@ import BaiduMap from 'vue-baidu-map'
 import elementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 import request from './utils/request'
+
+
+//播放器
+import VueVideoPlayer from 'vue-video-player'
+import 'video.js/dist/video-js.css'
+// import 'vue-video-player/src/custom-theme.css'
+
+Vue.use(VueVideoPlayer,
+  /* {
+  options: global default options,
+  events: global videojs events
+} */
+)
+
+
 //国际化语言包
 import VueI18n from 'vue-i18n'
 import locale from 'element-ui/lib/locale'

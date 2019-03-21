@@ -53,6 +53,12 @@
           <span slot="title">英雄定位</span>
         </el-menu-item>
       </router-link>
+      <router-link tag="span" :to="{path:'/marvelvideo'}">
+        <el-menu-item index="marvelvideo">
+          <i class="iconfont iconfont-s iconshexiangtou_shiti"></i>
+          <span slot="title">英雄视频</span>
+        </el-menu-item>
+      </router-link>
       <router-link tag="span" :to="{path:'/marvelupload'}">
         <el-menu-item index="marvelupload">
           <i class="iconfont iconfont-s iconchrome"></i>

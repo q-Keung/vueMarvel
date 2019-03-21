@@ -44,6 +44,11 @@ export default new Router({
           path:'marvelupload',
           name:'marvelupload',
           component:()=>import("../views/qiuniu/marvelUpload.vue")
+        },
+        {
+          path:'marvelvideo',
+          name:'marvelvideo',
+          component:()=>import("../views/marvelVideo/marvelVideo.vue")
         }
       ]
       
