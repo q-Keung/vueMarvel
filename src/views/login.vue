@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import {setToken} from '../utils/setAuth'
   export default {
     name: 'loginer',
     data() {
@@ -74,10 +75,13 @@
         this.$refs.loginform.validate((res, err) => {
           if (res) {
             this.$axios.post('/marvelLogin?username=' + un + '&password=' + pw).then(res => {
-              this.loading = false;
-              this.$router.push({
-                path: '/'
-              })
+              if(res.statusCode === 200){
+                this.loading = false;
+                setToken(res.token);
+                this.$router.push({
+                  path: '/'
+                })
+              }
               console.log(res);
             }).catch(() => {
               this.loading = false

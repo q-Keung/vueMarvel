@@ -8,7 +8,7 @@ import BaiduMap from 'vue-baidu-map'
 import elementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 import request from './utils/request'
-
+import '@/routerControl'
 
 //播放器
 import VueVideoPlayer from 'vue-video-player'
@@ -43,8 +43,6 @@ Vue.use(BaiduMap, {
   // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
   ak: 'Gj4pVfAeFPLn9gmaW4gfhrXOSZG1DaLG'
 })
-
-
 
 //改变element组件的尺寸和弹框的初始zIndex值
 // Vue.use(elementUi, {
