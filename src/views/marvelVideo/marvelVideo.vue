@@ -11,6 +11,7 @@
 
 <script>
   import mixins from '../../mixins/index'
+  import {getMarvelVideo} from '../../API/apis'
   export default {
     name: 'marvelVideo',
     data() {
@@ -23,14 +24,21 @@
           playbackRates: [0.7, 1.0, 1.5, 2.0],
           sources: [{
             type: "video/mp4",
-            src: "https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm"
+            src: "1"
           }],
           preload: 'metadata',
-          poster: "../../assets/iron1.jpg", //在视频开始播放之前显示的图像的URL
+          poster: "", //在视频开始播放之前显示的图像的URL
           width: window.innerWidth - 310,
           height: window.innerHeight - 65,
         }
       }
+    },
+    created(){
+      getMarvelVideo().then(({marvelVideo})=>{
+        let {sources,poster} = this.playerOptions;
+        poster = marvelVideo.avatar;
+        sources[0].src = marvelVideo.video;
+      })
     },
     mounted() {
       console.log('this is current player instance object', this.player)
@@ -83,13 +91,17 @@
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .marvelVideo {
     width: 100%;
     display: -webkit-flex;
     display: flex;
     justify-content: center;
     align-items: center;
+    .video-js .vjs-big-play-button{
+      top:0;left:0;bottom:0;right:0;
+      margin:auto;
+    }
   }
 
 </style>

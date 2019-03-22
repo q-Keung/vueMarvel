@@ -10,6 +10,15 @@ import 'element-ui/lib/theme-chalk/index.css';
 import request from './utils/request'
 import '@/routerControl'
 
+
+//缓存
+import VueLocalStorage from 'vue-localstorage'
+Vue.use(VueLocalStorage, {
+  name: 'ls',
+  bind: true //created computed members from your variable declarations
+})
+
+
 //播放器
 import VueVideoPlayer from 'vue-video-player'
 import 'video.js/dist/video-js.css'

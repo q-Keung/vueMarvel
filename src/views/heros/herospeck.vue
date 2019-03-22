@@ -50,8 +50,14 @@
       }
     },
     created(){
+      if(this.$ls.get('content')){
+        this.usContent(JSON.parse(this.$ls.get('content')))
+      }
     },
     methods: {
+      usContent(content){
+        this.contentData.unshift(content);
+      },
       onEditorChange(event) {
         this.toContent = {
             content:event.text,
@@ -59,7 +65,8 @@
         }
       },
       speakClick(content){
-          this.contentData.unshift(content);
+          this.usContent(content);
+          this.$ls.set('content',JSON.stringify(content));
           this.content = "";
       }
     },

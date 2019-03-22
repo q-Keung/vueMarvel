@@ -32,6 +32,7 @@
 
 <script>
   import mixins from '../mixins/index'
+  import {getMarvelTables} from '../API/apis'
   export default {
     data() {
       return {
@@ -74,8 +75,7 @@
       },
     },
     created() {
-      this.$axios.get('/getMarvelTable').then(res => {
-        console.log(res);
+      getMarvelTables().then(res=>{
         this.loading = false;
         this.resTableData = res.tables;
       })

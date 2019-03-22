@@ -15,21 +15,8 @@
   import vueWaterfallEasy from 'vue-waterfall-easy'
   import mixins from '../../mixins/index'
   import NProgress from 'nprogress' // Progress 进度条
-import 'nprogress/nprogress.css' // Progress 进度条样式
-import { setTimeout } from 'timers';
-  function parseUrl() {
-    let startUrl = '../../assets/imgs/waterfalls/s',
-      endUrl = '.jpg',
-      imgsArr = [];
-    for (let i = 1; i <= 23; i++) {
-      let opt = {
-        href: i,
-        src: `${startUrl}${i}${endUrl}`
-      }
-      imgsArr.push(opt)
-    }
-    return imgsArr;
-  }
+  import 'nprogress/nprogress.css' // Progress 进度条样式
+  import {getMarvelWaterFall} from '../../API/apis'
   export default {
     name: 'showheros',
     components: {
@@ -45,24 +32,32 @@ import { setTimeout } from 'timers';
         loadingStyle: {
           background: 'red',
         },
-        items: []
+        items: [],
+        waterfallCount:1,
       }
     },
     created() {
       console.log(process.env.BASE_API)
-      this.getWaterFallData();
+      // this.getWaterFallData();
+      getMarvelWaterFall().then(res=>{
+        this.items = res.mWaterfall;
+      })
     },
     methods: {
       getWaterFallData() {
-        this.$axios.get('/getMarvelWaterfall').then(res => {
-          console.log(res);
-          this.items = res.mWaterfall;
-        })
+
       },
       getData() {
-        setTimeout(() => {
-          this.$refs.waterfall.waterfallOver()
-        }, 2000)
+         getMarvelWaterFall().then(res=>{
+           console.log(this.waterfallCount)
+           if(this.waterfallCount > 1){
+             this.$refs.waterfall.waterfallOver();
+             return false;
+           }
+           this.waterfallCount++;
+           this.items = this.items.concat(res.mWaterfall);
+         })
+        // this.$refs.waterfall.waterfallOver()
       },
       imgClickFn(e, {
         index,
