@@ -44,7 +44,12 @@
           <el-menu-item index="4-11">快银</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
-
+      <router-link tag="span" :to="{path:'/marvelpanel'}">
+        <el-menu-item index="marvelpanel">
+          <i class="el-icon-goods"></i>
+          <span slot="title">英雄介绍</span>
+        </el-menu-item>
+      </router-link>
       <router-link tag="span" :to="{path:'/herospeck'}">
         <el-menu-item index="herospeck">
           <i class="el-icon-goods"></i>

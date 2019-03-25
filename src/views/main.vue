@@ -2,11 +2,6 @@
   <el-main>
     <el-row>
       <el-col :span="22" :offset="1">
-        <!-- <el-carousel height="350px" trigger="click" @change="getCarousel">
-          <el-carousel-item v-for="(item,cur) in carouselArr" :key="cur">
-            <img :src="item.url" alt="" />
-          </el-carousel-item>
-        </el-carousel> -->
         <div class="marvel-main">
           <!-- <header>
             <h2>史上最漫威英雄介绍，看完以后再也不会懵逼</h2>
@@ -22,7 +17,7 @@
             </p>
             <img src="../assets/iron1.jpg" alt="">
           </div> -->
-          <div :class="className" :style="{height:height,width:width}" ref="myEchart"></div>
+          <vue-echarts></vue-echarts>
           <div class="marvel-timeline">
             <time-line></time-line>
             <div class="marvel-rate">
@@ -40,7 +35,7 @@
 </template>
 
 <script>
-  import echarts from 'echarts'
+  import vueEcharts from '../components/echarts.vue'
   import timeLine from '../components/timeline'
   import {
     mapMutations,
@@ -49,25 +44,12 @@
   export default {
     name: 'mainer',
     components: {
-      timeLine
+      timeLine,
+      vueEcharts
     },
     data() {
       return {
-        className: 'chart',
-        chart: null,
-        height: '350px',
-        width: '100%',
         rateVal: 0,
-        carouselArr: [{
-            url: require('../assets/imgs/swipers/carousel1.jpg')
-          },
-          {
-            url: require('../assets/imgs/swipers/carousel2.jpg')
-          },
-          {
-            url: require('../assets/imgs/swipers/carousel3.jpg')
-          },
-        ]
       }
     },
     created() {
@@ -86,106 +68,7 @@
           message: '谢谢您的评分！你真可爱！'
         })
       },
-      initChart() {
-        this.chart = echarts.init(this.$refs.myEchart, 'light');
-        this.chart.showLoading();
-        setTimeout(_ => {
-          this.chart.hideLoading();
-        }, 1000)
-        this.chart.setOption({
-          title: {
-            text: '漫威统计展示'
-          },
-          color: ['#ca8622', '#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#bda29a', '#6e7074',
-            '#546570', '#c4ccd3'
-          ],
-          /*hover  提示 */
-          tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-              type: 'cross',
-              crossStyle: {
-                color: '#999'
-              }
-            }
-          },
-          //右上角的功能区域
-          toolbox: {
-            feature: {
-              dataView: {
-                show: true,
-                readOnly: false
-              },
-              magicType: {
-                show: true,
-                type: ['line', 'bar']
-              },
-              restore: {
-                show: true
-              },
-              saveAsImage: {
-                show: true
-              }
-            }
-          },
-          legend: {
-            type: 'scroll',
-            // selected: data.selected
-            // data: ['美国队长', '钢铁侠', '雷神', '绿巨人', '鹰眼', '黑寡妇']
-            // orient:'vertical',
-            // data: [{
-            //   name: '美队',
-            //   // 强制设置图形为圆。
-            //   icon: 'circle',
-            //   // 设置文本为红色
-            //   textStyle: {
-            //     color: 'red'
-            //   }
-            // }]
-          },
-          xAxis: {
-            data: ['美国队长', '钢铁侠', '雷神', '绿巨人', '鹰眼', '黑寡妇']
-          },
-          yAxis: {},
-
-          series: [{
-            name: '美国队长',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20],
-            // label: {
-            //   show: true,
-            //   // 标签的文字。
-            //   formatter: '提示文字'
-            // },
-            // // 高亮样式。
-            // emphasis: {
-            //   itemStyle: {
-            //     // 高亮时点的颜色。
-            //     color: '#61a0a8'
-            //   },
-            //   label: {
-            //     show: true,
-            //     // 高亮时标签的文字。
-            //     formatter: 'hoverW文字'
-            //   }
-            // }
-          }, {
-            name: '钢铁侠',
-            type: 'bar',
-            data: [15, 25, 40, 20, 30, 40],
-          }]
-        });
-      }
-    },
-    mounted() {
-      this.initChart()
-    },
-    beforeDestroy() {
-      if (!this.chart) {
-        return
-      }
-      this.chart.dispose()
-      this.chart = null
+      
     },
     // beforeRouteLeave(to, from, next) {
     //   console.log(to)
@@ -210,16 +93,6 @@
     header {
       text-align: center;
     }
-
-    /*漫威数据统计*/
-    .chart {
-      background: #f2f3f5;
-      border-radius: 10px;
-      box-shadow: 1px 1px 3p 2px #b7b8bb;
-    }
-
-
-
     /*漫威时间线*/
     .marvel-timeline {
       width: 100%;
@@ -227,10 +100,14 @@
 
     /*评分*/
     .marvel-rate {
-      margin: 20px 0;
-      width: 100%;
+      margin: 20px auto;
+      width: 95%;
       display: flex;
-
+      align-items: center;
+      box-shadow: 0 0 5px 5px rgb(247, 244, 244);
+      height:80px;
+      border:1px solid rgb(236, 231, 231);
+      border-radius:10px;
       .rate-title {
         width: 100%;
         display: flex;

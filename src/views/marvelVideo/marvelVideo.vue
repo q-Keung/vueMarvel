@@ -1,5 +1,5 @@
 <template>
-  <div class="marvelVideo">
+  <div class="marvelVideo" v-if="isShowRideo">
     <video-player class="video-player-box" ref="videoPlayer" :options="playerOptions" :playsinline="true"
       customEventName="customstatechangedeventname" @play="onPlayerPlay($event)" @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)"
       @waiting="onPlayerWaiting($event)" @playing="onPlayerPlaying($event)" @loadeddata="onPlayerLoadeddata($event)"
@@ -16,6 +16,7 @@
     name: 'marvelVideo',
     data() {
       return {
+        isShowRideo:false,
         playerOptions: {
           // videojs options
           controls: true,
@@ -38,6 +39,7 @@
         let {sources,poster} = this.playerOptions;
         poster = marvelVideo.avatar;
         sources[0].src = marvelVideo.video;
+        this.isShowRideo = true;
       })
     },
     mounted() {

@@ -11,6 +11,16 @@ import request from './utils/request'
 import '@/routerControl'
 
 
+//echarts
+import echarts from 'echarts'
+import vueECharts from 'vue-echarts'
+import 'echarts/lib/chart/bar'
+import 'echarts/lib/component/tooltip'
+// 如果需要配合 ECharts 扩展使用，只需要直接引入扩展包即可 以 ECharts-GL 为例：
+// 需要安装依赖：npm install --save echarts-gl，并添加如下引用
+// import 'echarts-gl'
+Vue.component('v-chart', vueECharts)
+
 //缓存
 import VueLocalStorage from 'vue-localstorage'
 Vue.use(VueLocalStorage, {

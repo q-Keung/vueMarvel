@@ -42,7 +42,15 @@
     transform: translate3d(-50%, 0, 0);
   }
 }
-
+/*文字两边对齐*/
+.justify {
+  text-align: justify;
+}
+.justify:after {
+  display: inline-block;
+  width: 100%;
+  /* content: ""; */
+}
 /*去除滚动条*/
 .delScrollBar::-webkit-scrollbar {
   display: none;

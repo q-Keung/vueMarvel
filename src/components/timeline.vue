@@ -1,5 +1,5 @@
 <template>
-  <timeline timeline-theme="#1989fa" timeline-bg="#1989fa">
+  <timeline v-if="timelineData.length > 0" timeline-theme="#1989fa" timeline-bg="#1989fa">
     <timeline-title font-color="#1989fa">
       <el-card>
         <p>漫威电影宇宙（MCU）时间线</p>

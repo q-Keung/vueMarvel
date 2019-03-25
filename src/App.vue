@@ -34,14 +34,7 @@ li {
   color: #2c3e50;
   /* margin-top: 60px; */
 }
-.justify {
-  text-align: justify;
-}
-.justify:after {
-  display: inline-block;
-  width: 100%;
-  /* content: ""; */
-}
+
 
 /*fade-transform*/
 .fade-transform-leave-active,

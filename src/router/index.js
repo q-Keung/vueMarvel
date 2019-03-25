@@ -53,6 +53,19 @@ export default new Router({
       ]
       
     },
-    
+    {
+      path:'/marvelpanel',
+      name:'marvelpanel',
+      component:layout,
+      redirect:'/marvelpanel/panelindex',
+      // meta:{title:panelindex},
+      children:[
+        {
+          path:'panelindex',
+          name:'panelindex',
+          component:()=>import('../views/panel/marvelPanel.vue')
+        }
+      ]
+    }
   ]
 })
