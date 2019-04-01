@@ -17,7 +17,7 @@
             </p>
             <img src="../assets/iron1.jpg" alt="">
           </div> -->
-          <vue-echarts></vue-echarts>
+          <!-- <vue-echarts></vue-echarts> -->
           <div class="marvel-timeline">
             <time-line></time-line>
             <div class="marvel-rate">
