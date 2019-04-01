@@ -1,33 +1,19 @@
 <template>
   <el-main>
     <el-row>
-      <el-col :span="22" :offset="1">
+      <el-col style="height:100%;" :span="22" :offset="1">
         <div class="marvel-main">
-          <!-- <header>
-            <h2>史上最漫威英雄介绍，看完以后再也不会懵逼</h2>
-            <span class="author">作者：<br />
-              张子强，一名前端码农，坐标广州，漫威的死忠粉，喜爱刺激的游乐设施。</span>
-          </header>
-          <div class="marvel-content">
-            <p class="justify">
-              《钢铁侠1、2》：Tony
-              Stark（小罗伯特·唐尼饰）是个一点都不纨绔的富二代，有个炒鸡好用的脑子，十五岁时就进入麻省理工，十七岁以最高分毕业。可以在最快的速度里精通任何一门知识。Tony在21岁时失去父母，接管Stark家族企业，并用聪明的脑袋扩展财富。后来在一次突如其来的绑架中，差点丧生，在制作导弹的废铜烂铁中Tony鼓捣出了钢铁侠战衣，死里逃生。回来之后改良战衣，成为真正的钢铁侠，公开超级英雄的身份来保护世界。公开自己钢铁侠身份后，引来媒体、舆论和政府各界的质疑，邪恶势力再度来袭，小唐尼一一解决还不忘撩妹，秘书Pepper升级为女朋友。
-              和其他超级英雄不同，钢铁侠本人是没有经过任何变异和强化改造的，没有任何超能力，用才智证明科技才是第一生产力！ 神盾局局长Nick
-              Fury三顾茅庐，希望钢铁侠加入复仇者联盟，钢铁侠加入（神盾局是美国政府专门用于同超能力英雄接洽并进行管理的特殊部队）
-            </p>
-            <img src="../assets/iron1.jpg" alt="">
-          </div> -->
-          <!-- <vue-echarts></vue-echarts> -->
+          <vue-echarts></vue-echarts>
           <div class="marvel-timeline">
             <time-line></time-line>
             <div class="marvel-rate">
               <div class="rate-title">
                 <span class="span">了解完漫威电影宇宙，就来评个分吧！<span class="iconfont iconmysql"></span></span>
-                <el-rate ref="rate" @change="changeRate" v-model="rateVal" allow-half show-score :colors="['#99A9BF', '#F7BA2A', '#FF9900']"></el-rate>
+                <el-rate ref="rate" @change="changeRate" v-model="rateVal" allow-half show-score
+                  :colors="['#99A9BF', '#F7BA2A', '#FF9900']"></el-rate>
               </div>
             </div>
           </div>
-
         </div>
       </el-col>
     </el-row>
@@ -68,7 +54,7 @@
           message: '谢谢您的评分！你真可爱！'
         })
       },
-      
+
     },
     // beforeRouteLeave(to, from, next) {
     //   console.log(to)
@@ -88,11 +74,12 @@
       // z-index: 9999;
     }
   }
-
   .marvel-main {
+
     header {
       text-align: center;
     }
+
     /*漫威时间线*/
     .marvel-timeline {
       width: 100%;
@@ -105,9 +92,10 @@
       display: flex;
       align-items: center;
       box-shadow: 0 0 5px 5px rgb(247, 244, 244);
-      height:80px;
-      border:1px solid rgb(236, 231, 231);
-      border-radius:10px;
+      height: 80px;
+      border: 1px solid rgb(236, 231, 231);
+      border-radius: 10px;
+
       .rate-title {
         width: 100%;
         display: flex;
@@ -117,8 +105,9 @@
       .span {
         margin-right: 20px;
       }
-      .el-rate{
-        width:165px;
+
+      .el-rate {
+        width: 165px;
       }
     }
 

@@ -64,21 +64,13 @@
     top: 60px;
     bottom: 0;
     right: 0;
-    // width: 100vw;
-    // width: 100vw;
-    // height: 100vh;
-    margin-top: 0;
-    // background: #98b4d6;
+    // margin-top: 0;
     overflow-x: hidden;
     overflow-y: auto;
-
-    .tester {
-      height: 1000px;
-    }
-
     /*修改滚动条样式*/
     &::-webkit-scrollbar-track {
       -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
       border-radius: 6px;
       background-color: #f5f5f5;
     }
@@ -91,6 +83,7 @@
     &::-webkit-scrollbar-thumb {
       border-radius: 6px;
       -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
       background-color: #606266;
     }
   }
@@ -112,6 +105,7 @@
     /*修改滚动条样式*/
     &::-webkit-scrollbar-track {
       -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
       border-radius: 6px;
       background-color: #f5f5f5;
     }
@@ -124,6 +118,7 @@
     &::-webkit-scrollbar-thumb {
       border-radius: 6px;
       -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
       background-color: #606266;
     }
   }
