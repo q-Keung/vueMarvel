@@ -29,6 +29,11 @@
               </el-dropdown-menu>
             </el-dropdown>
           </div>
+          <div class="items-line">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
       </el-col>
     </el-row>
@@ -132,5 +137,4 @@
       border-radius: 50%;
     }
   }
-
 </style>

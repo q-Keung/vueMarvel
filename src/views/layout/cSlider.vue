@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="c-slider">
     <div class="switch-menu items-center">
       <i class="iconfont iconliebiaomoshi_kuai" @click="switchMenu"></i>
     </div>
@@ -46,13 +46,13 @@
       </el-submenu>
       <router-link tag="span" :to="{path:'/marvelpanel'}">
         <el-menu-item index="marvelpanel">
-          <i class="el-icon-goods"></i>
+          <i class="iconfont iconfont-s iconfilter-fill"></i>
           <span slot="title">英雄介绍</span>
         </el-menu-item>
       </router-link>
       <router-link tag="span" :to="{path:'/herospeck'}">
         <el-menu-item index="herospeck">
-          <i class="el-icon-goods"></i>
+          <i class="iconfont iconfont-s iconmoshubang"></i>
           <span slot="title">英雄发言</span>
         </el-menu-item>
       </router-link>

@@ -5,6 +5,13 @@ import {
   getToken
 } from './utils/setAuth'
 const whiteList = ['/login'];  //登陆白名单
+let viewPort,mode = window.navigator.userAgent;;
+console.log(router)
+console.log(window.navigator.userAgent);
+if(mode.indexOf('iPhone') != -1 || mode.indexOf('Android') != -1){
+  store.commit('setMode',1);
+}
+
 
 //主要做些登录拦截
 router.beforeEach((to, from, next) => {

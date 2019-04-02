@@ -14,6 +14,7 @@ export default {
 <style lang="scss">
 @import './style/app.scss';
 @import './style/fontFace.scss';
+@import './style/viewPort.scss';
 * {
   margin: 0;
   padding: 0;

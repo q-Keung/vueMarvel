@@ -7,12 +7,16 @@ import {
 Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
-    rateStatus: 0 //评分状态
+    rateStatus: 0, //评分状态
+    mode:''
   },
   mutations: {
     setRate(state, rate) {
       state.rateStatus = rate;
     },
+    setMode(state,mode){
+      state.mode = mode;
+    }
   },
   actions: {
     // 退出
